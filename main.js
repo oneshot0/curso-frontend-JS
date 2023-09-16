@@ -1,9 +1,18 @@
-const menuEmail = document.querySelector('.navbar-email');
-const desktopMenu = document.querySelector('.desktop-menu');
+// const menuEmail = document.querySelector('.navbar-email');
+// const desktopMenu = document.querySelector('.desktop-menu');
+const $ = (selector) => document.querySelector(selector);
 
-menuEmail.addEventListener('click', toggleDesktopMenu);
+const menuEmail = $('.navbar-email');
+const desktopMenu = $('.desktop-menu');
+const menuHamIcon = $('.menu');
+const mobileMenu = $('.mobile-menu');
 
-function toggleDesktopMenu() {
-  desktopMenu.classList.toggle('inactive');
+
+menuEmail.addEventListener('click', () => desktopMenu.classList.toggle('inactive'));
+menuHamIcon.addEventListener('click', toggleMobileMenu);
+
+
+function toggleMobileMenu() {
+  mobileMenu.classList.toggle('oculto');
 }
 
