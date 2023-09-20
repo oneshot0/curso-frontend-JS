@@ -3,18 +3,23 @@
 const $ = (selector) => document.querySelector(selector);
 
 const menuEmail = $('.navbar-email');
-const desktopMenu = $('.desktop-menu');
 const menuHamIcon = $('.menu');
-const mobileMenu = $('.mobile-menu');
 const menuCarritoIcon = $('.navbar-shopping-cart');
+const productDetailCloseIcon = $('.product-detail-close');
+const desktopMenu = $('.desktop-menu');
+const mobileMenu = $('.mobile-menu');
 const shoppingCartContainer = $('#shoppingCartContainer');
+const productDetailContainer = $('#productDetail');
 const cardsContainer = $('.cards-container');
 
 
-menuEmail.addEventListener('click', () => desktopMenu.classList.toggle('inactive') + shoppingCartContainer.classList.add('inactive'));
 
+menuEmail.addEventListener('click', () => desktopMenu.classList.toggle('inactive') + shoppingCartContainer.classList.add('inactive'));
 menuHamIcon.addEventListener('click', toggleMobileMenu);
 menuCarritoIcon.addEventListener('click', toggleCarritoAside);
+productDetailCloseIcon.addEventListener('click', closeProductDetailAside)
+
+
 
 function toggleMobileMenu() {
   const isAsideClosed = shoppingCartContainer.classList.contains('inactive');
@@ -23,9 +28,9 @@ function toggleMobileMenu() {
     shoppingCartContainer.classList.add('inactive');
   }
 
+  closeProductDetailAside();
   mobileMenu.classList.toggle('oculto');
 }
-
 function toggleCarritoAside() {
   //1er método para ocultar 
   const isMobileMenuClosed = mobileMenu.classList.contains('oculto');
@@ -33,11 +38,25 @@ function toggleCarritoAside() {
   if (!isMobileMenuClosed) {
     mobileMenu.classList.add('oculto');
   }
+  const isproductDetailClosed = productDetailContainer.classList.contains('oculto');
+  
+  if (!isproductDetailClosed) {
+    productDetailContainer.classList.add('inactive');
+  }
   //2do método para ocultar 
     shoppingCartContainer.classList.toggle('inactive');
     desktopMenu.classList.add('inactive');
 
 }
+function openProductDetailAside() {
+  shoppingCartContainer.classList.add('inactive');
+  productDetailContainer.classList.remove('inactive');
+  
+} 
+function closeProductDetailAside() {
+  productDetailContainer.classList.add('inactive');
+}
+
 
 const productList = [];
 productList.push({
@@ -77,9 +96,6 @@ productList.push ({
     image: 'https://cdn.siroko.com/s/files/1/1220/6874/products/siroko-tech-k3s-clearfog-lente-antiniebla-frontal/1200x/crop_center.jpg?v=1635209603'
 });
 
-
-
-
 /* <div class="product-card">
       <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
       <div class="product-info">
@@ -95,38 +111,40 @@ productList.push ({
 
 function renderProducts(arr) {
   for (product of arr){
-  const productCard = document.createElement('div');
-  productCard.classList.add('product-card');
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card');
 
-  // product = {name, price, image} => product.image
-  const productImg = document.createElement('img');
-  productImg.setAttribute('src', product.image)
+    // product = {name, price, image} => product.image
+    const productImg = document.createElement('img');
+    productImg.setAttribute('src', product.image);
+    productImg.addEventListener('click', openProductDetailAside);
 
-  // Sección de precio y nombre del producto
-  const productInfo = document.createElement('div');
-  productInfo.classList.add('product-info');
-  const productInfoDiv = document.createElement('div');
-  const productPrice = document.createElement('p');
-  productPrice.innerText =  '$' + product.price;
-  const productName = document.createElement('p');
-  productName.innerText = product.name
+    // Sección de precio y nombre del producto
+    const productInfo = document.createElement('div');
+    productInfo.classList.add('product-info');
+    const productInfoDiv = document.createElement('div');
+    const productPrice = document.createElement('p');
+    productPrice.innerText =  '$' + product.price;
+    const productName = document.createElement('p');
+    productName.innerText = product.name
 
-  productInfoDiv.append(productPrice, productName);
+    productInfoDiv.append(productPrice, productName);
 
-    //Sección del ícono 
-  const productInfoFigure = document.createElement('figure');
-  const productImgCart = document.createElement('img');
-  productImgCart.setAttribute('src','./icons/bt_add_to_cart.svg' );
+      //Sección del ícono 
+    const productInfoFigure = document.createElement('figure');
+    const productImgCart = document.createElement('img');
+    productImgCart.setAttribute('src','./icons/bt_add_to_cart.svg' );
 
-  //Empezando a organizar el html
-  productInfoFigure.appendChild(productImgCart);
+    //Empezando a organizar el html
+    productInfoFigure.appendChild(productImgCart);
 
-  productInfo.append(productInfoDiv, productInfoFigure);
+    productInfo.append(productInfoDiv, productInfoFigure);
 
-  productCard.append(productImg, productInfo);
-  cardsContainer.appendChild(productCard);
+    productCard.append(productImg, productInfo);
+    cardsContainer.appendChild(productCard);
 }
 }
 
 renderProducts(productList);
+
 
