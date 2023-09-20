@@ -7,21 +7,20 @@ const desktopMenu = $('.desktop-menu');
 const menuHamIcon = $('.menu');
 const mobileMenu = $('.mobile-menu');
 const menuCarritoIcon = $('.navbar-shopping-cart');
-const aside = $('.product-detail');
+const shoppingCartContainer = $('#shoppingCartContainer');
 const cardsContainer = $('.cards-container');
 
 
-menuEmail.addEventListener('click', () => desktopMenu.classList.toggle('inactive') + aside.classList.add('inactive'));
+menuEmail.addEventListener('click', () => desktopMenu.classList.toggle('inactive') + shoppingCartContainer.classList.add('inactive'));
 
 menuHamIcon.addEventListener('click', toggleMobileMenu);
 menuCarritoIcon.addEventListener('click', toggleCarritoAside);
 
-
 function toggleMobileMenu() {
-  const isAsideClosed = aside.classList.contains('inactive');
+  const isAsideClosed = shoppingCartContainer.classList.contains('inactive');
 
   if (!isAsideClosed) {
-    aside.classList.add('inactive');
+    shoppingCartContainer.classList.add('inactive');
   }
 
   mobileMenu.classList.toggle('oculto');
@@ -35,7 +34,7 @@ function toggleCarritoAside() {
     mobileMenu.classList.add('oculto');
   }
   //2do método para ocultar 
-    aside.classList.toggle('inactive');
+    shoppingCartContainer.classList.toggle('inactive');
     desktopMenu.classList.add('inactive');
 
 }
@@ -64,7 +63,7 @@ productList.push({
 });
 productList.push ({
     name:'Tennis Montain Bike',
-    price: 2200,
+    price: 200,
     image: 'https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/8ea578f6c07847fca2d0ac85011d7f1f_9366/Tenis_para_Mountain_Bike_Five_Ten_Freerider_Negro_FW2835_01_standard.jpg'
 });
 productList.push ({
