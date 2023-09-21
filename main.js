@@ -13,14 +13,17 @@ const productDetailContainer = $('#productDetail');
 const cardsContainer = $('.cards-container');
 
 
-
-menuEmail.addEventListener('click', () => desktopMenu.classList.toggle('inactive') + shoppingCartContainer.classList.add('inactive'));
+menuEmail.addEventListener('click', toogleDescktopMenu);
 menuHamIcon.addEventListener('click', toggleMobileMenu);
 menuCarritoIcon.addEventListener('click', toggleCarritoAside);
 productDetailCloseIcon.addEventListener('click', closeProductDetailAside)
 
 
-
+function toogleDescktopMenu() {
+  desktopMenu.classList.toggle('inactive');
+  shoppingCartContainer.classList.add('inactive');
+  productDetailContainer.classList.add('inactive');
+}
 function toggleMobileMenu() {
   const isAsideClosed = shoppingCartContainer.classList.contains('inactive');
 
@@ -51,10 +54,13 @@ function toggleCarritoAside() {
 function openProductDetailAside() {
   shoppingCartContainer.classList.add('inactive');
   productDetailContainer.classList.remove('inactive');
+  desktopMenu.classList.add('inactive');
+
   
 } 
 function closeProductDetailAside() {
   productDetailContainer.classList.add('inactive');
+  mobileMenu.classList.add('oculto');
 }
 
 
