@@ -68,7 +68,7 @@ const productList = [];
 productList.push({
   name: 'Bike',
   price: 120,
-  image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+  image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fperusupply.com%2Fherramientas-de-golpe%2F282-martillo-cabeza-conica-27-mm-una-curva-mango-fibra-de-vidrio-truper-7506240641667.html&psig=AOvVaw0oK794Q0P4_D7bkMiUnRW0&ust=1705423058723000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCIivg4_q34MDFQAAAAAdAAAAABAF',
 });
 productList.push({
   name: "Modern kitchen",
