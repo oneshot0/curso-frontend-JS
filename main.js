@@ -101,6 +101,11 @@ productList.push ({
     price: 600,
     image: 'https://cdn.siroko.com/s/files/1/1220/6874/products/siroko-tech-k3s-clearfog-lente-antiniebla-frontal/1200x/crop_center.jpg?v=1635209603'
 });
+productList.push ({
+    name:'Martillo',
+    price: 100,
+    image: 'https://perusupply.com/312-medium_default/martillo-cabeza-conica-27-mm-una-curva-mango-fibra-de-vidrio-truper.jpg'
+});
 
 /* <div class="product-card">
       <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
